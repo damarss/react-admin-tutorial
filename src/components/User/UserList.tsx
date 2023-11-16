@@ -1,5 +1,6 @@
 import { useMediaQuery, Theme } from '@mui/material';
-import { Datagrid, EmailField, List, SimpleList, TextField } from 'react-admin';
+import { Datagrid, EmailField, List, SimpleList, TextField, UrlField } from 'react-admin';
+import { MyUrlField } from './MyUrlField';
 
 export const UserList = () => {
   const isSmall = useMediaQuery<Theme>((theme) => theme.breakpoints.down('sm'));
@@ -19,7 +20,8 @@ export const UserList = () => {
             <EmailField source="email" />
             <TextField source="address.street" />
             <TextField source="phone" />
-            <TextField source="website" />
+            <UrlField source="website" />
+            <MyUrlField source="website" />
             <TextField source="company.name" />
           </Datagrid>
         )
