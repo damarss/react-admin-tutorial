@@ -1,4 +1,9 @@
-import { Create, Datagrid, Edit, EditButton, List, ReferenceField, ReferenceInput, SimpleForm, TextField, TextInput } from 'react-admin';
+import { Create, Datagrid, Edit, EditButton, List, ReferenceField, ReferenceInput, Show, SimpleForm, SimpleShowLayout, TextField, TextInput, useRecordContext } from 'react-admin';
+
+const PostTitle = () => {
+  const record = useRecordContext();
+  return <span>Post { record? `"${record.title}"`: `` }</span> 
+}
 
 export const PostList = () => (
     <List>
@@ -11,8 +16,19 @@ export const PostList = () => (
     </List>
 );
 
+export const PostShow = () => (
+    <Show title={<PostTitle />}>
+        <SimpleShowLayout>
+            <TextField source="id" />
+            <ReferenceField source="userId" reference="users" />
+            <TextField source="title" />
+            <TextField source="body" />
+        </SimpleShowLayout>
+    </Show>
+);
+
 export const PostEdit = () => (
-    <Edit>
+    <Edit title={<PostTitle />}>
         <SimpleForm>
             <TextInput source="id" InputProps={{disabled: true}} />
             <ReferenceInput source="userId" reference="users" />
