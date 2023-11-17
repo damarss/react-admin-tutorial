@@ -1,4 +1,2 @@
-import { UserList } from "./User";
-import { PostList, PostEdit, PostCreate, PostShow } from "./Post";
-
-export { UserList, PostList, PostEdit, PostCreate, PostShow };
+export { UserList } from "./User";
+export { PostList, PostEdit, PostCreate, PostShow } from "./Post";
