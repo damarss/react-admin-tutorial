@@ -13,7 +13,7 @@ export const UserList = () => {
           secondaryText={record => record.username}
           tertiaryText={record => record.email}
         /> ) : (
-          <Datagrid rowClick="edit">
+          <Datagrid rowClick="show">
             <TextField source="id" />
             <TextField source="name" />
             <TextField source="username" />
