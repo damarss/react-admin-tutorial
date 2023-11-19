@@ -1,4 +1,4 @@
-import { Create, Datagrid, Edit, EditButton, List, ReferenceField, ReferenceInput, Show, SimpleForm, SimpleShowLayout, TextField, TextInput, useRecordContext } from 'react-admin';
+import { Create, Datagrid, DeleteButton, Edit, EditButton, List, ReferenceField, ReferenceInput, Show, SimpleForm, SimpleShowLayout, TextField, TextInput, useRecordContext } from 'react-admin';
 
 const PostTitle = () => {
   const record = useRecordContext();
@@ -14,9 +14,10 @@ export const PostList = () => (
     <List filters={postFilters}>
         <Datagrid rowClick="show">
             <TextField source="id" />
-            <ReferenceField source="userId" reference="users" link="show" />
+            <ReferenceField source="user_id" reference="users" link="show" />
             <TextField source="title" />
             <EditButton />
+            <DeleteButton />
         </Datagrid>
     </List>
 );
@@ -25,7 +26,7 @@ export const PostShow = () => (
     <Show title={<PostTitle />}>
         <SimpleShowLayout>
             <TextField source="id" />
-            <ReferenceField source="userId" reference="users" />
+            <ReferenceField source="user_id" reference="users" />
             <TextField source="title" />
             <TextField source="body" />
         </SimpleShowLayout>
@@ -36,7 +37,7 @@ export const PostEdit = () => (
     <Edit title={<PostTitle />}>
         <SimpleForm>
             <TextInput source="id" InputProps={{disabled: true}} />
-            <ReferenceInput source="userId" reference="users" />
+            <ReferenceInput source="user_id" reference="users" />
             <TextInput source="title" />
             <TextInput source="body" multiline rows={5}/>
         </SimpleForm>
@@ -46,7 +47,7 @@ export const PostEdit = () => (
 export const PostCreate = () => (
     <Create>
         <SimpleForm>
-            <ReferenceInput source="userId" reference="users" />
+            <ReferenceInput source="user_id" reference="users" />
             <TextInput source="title" />
             <TextInput source="body" multiline rows={5}/>
         </SimpleForm>
