@@ -7,7 +7,7 @@ const PostTitle = () => {
 
 const postFilters = [
   <TextInput source="q" label="Search" alwaysOn />,
-  <ReferenceInput source="userId" label="User" reference="users" />
+  <ReferenceInput source="user_id" label="User" reference="users" />
 ]
 
 export const PostList = () => (

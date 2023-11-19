@@ -13,6 +13,10 @@ export const dataProvider = localStorageDataProvider({
       {id: 3, title: 'Lorem Ipsum', body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris.', user_id: 2},
       {id: 4, title: 'Sed egestas', body: 'Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue.', user_id: 2},
       {id: 5, title: 'Lorem Ipsum', body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris.', user_id: 3}
+    ],
+    events: [
+      {id: 1, title: 'New Year Party', date: '2019-01-01', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris.', thumbnail: 'pict.jpg'},
+      {id: 2, title: 'Birthday Party', date: '2019-01-01', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris.', thumbnail: 'pict.jpg'},
     ]
   },
   loggingEnabled: false,
