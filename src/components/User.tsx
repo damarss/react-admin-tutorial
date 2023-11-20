@@ -1,6 +1,7 @@
 import { useMediaQuery, Theme } from '@mui/material';
 import { Datagrid, EmailField, List, SimpleList, TextField, UrlField } from 'react-admin';
 import { MyUrlField } from './MyUrlField';
+import MobileGrid from './MobileGrid';
 
 export const UserList = () => {
   const isSmall = useMediaQuery<Theme>((theme) => theme.breakpoints.down('sm'));
@@ -8,11 +9,8 @@ export const UserList = () => {
   return (
     <List>
       { isSmall ? ( 
-        <SimpleList
-          primaryText={record => record.name}
-          secondaryText={record => record.username}
-          tertiaryText={record => record.email}
-        /> ) : (
+          <MobileGrid />
+         ) : (
           <Datagrid rowClick="show">
             <TextField source="id" />
             <TextField source="name" />

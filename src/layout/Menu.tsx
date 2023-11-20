@@ -12,8 +12,8 @@ const Menu = ({ dense = false }: MenuProps) => {
         marginBottom: 1,
       }}
     >
-      <DashboardMenuItem sx={{ borderRadius: "0 10px 10px 0", overflow: "hidden" }}/>
-      <ResourceMenuItems/>
+      <DashboardMenuItem />
+      <ResourceMenuItems />
     </Box>
   )
 }
