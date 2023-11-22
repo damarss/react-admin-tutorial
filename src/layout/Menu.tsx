@@ -7,7 +7,7 @@ const Menu = ({ dense = false }: MenuProps) => {
   return (
     <Box
       sx={{
-        width: open? 200: 50,
+        width: open? 200: 10,
         marginTop: 1,
         marginBottom: 1,
       }}
