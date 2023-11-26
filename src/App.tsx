@@ -2,6 +2,7 @@ import {
   Admin,
   EditGuesser,
   ListGuesser,
+  Login,
   Resource,
   ShowGuesser,
   defaultTheme,
@@ -36,6 +37,9 @@ export const App = () => (
   <Admin
     title=""
     authProvider={localAuthProvider}
+    loginPage={
+      <Login backgroundImage="https://img.freepik.com/free-photo/painting-mountain-lake-with-mountain-background_188544-9126.jpg" />
+    }
     dataProvider={dataProvider}
     dashboard={Dashboard}
     layout={Layout}

@@ -72,9 +72,17 @@ const ProjectGrid = () => {
               const endDate = new Date(record.enddate);
               const startDate = new Date(record.startdate);
 
-              const timeleft = Math.round(
+              let timeleft: string | number;
+
+              timeleft = Math.round(
                 (endDate.getTime() - Date.now()) / (1000 * 60 * 60 * 24)
               );
+
+              if (timeleft < 0) {
+                timeleft = "Project has ended";
+              } else {
+                timeleft = timeleft + " days left";
+              }
 
               const progress = Math.round(
                 ((Date.now() - startDate.getTime()) /
@@ -83,7 +91,10 @@ const ProjectGrid = () => {
               );
 
               return (
-                <Box display={"flex"} alignItems={"center"}>
+                <Box
+                  display={"flex"}
+                  alignItems={"center"}
+                >
                   <Slider
                     defaultValue={progress}
                     disabled
@@ -98,9 +109,9 @@ const ProjectGrid = () => {
                       },
                     }}
                   />
-                  <span
-                    style={{ marginLeft: 8, fontSize: 14 }}
-                  >{`${timeleft} days left`}</span>
+                  <span style={{ marginLeft: 8, fontSize: 14 }}>
+                    {timeleft}
+                  </span>
                   <Box sx={{ flexGrow: 1 }} />
                 </Box>
               );
