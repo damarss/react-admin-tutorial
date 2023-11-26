@@ -1,8 +1,6 @@
 import {
-  Button,
-  Datagrid,
-  DateField,
-  LinearProgress,
+  BulkActionsToolbar,
+  CreateButton,
   List,
   NumberField,
   RecordContextProvider,
@@ -11,18 +9,10 @@ import {
   TextField,
   WithRecord,
   useListContext,
-  useRecordContext,
 } from "react-admin";
-import {
-  Card,
-  Grid,
-  Box,
-  CardActions,
-  CardContent,
-  Typography,
-  Avatar,
-  Slider,
-} from "@mui/material";
+import { useMediaQuery, Theme } from "@mui/material";
+import { Card, Grid, Box, Typography, Avatar, Slider } from "@mui/material";
+import { ProjectCreate } from "./ProjectCreate";
 
 type ProjectListProps = {
   id: number;
@@ -47,8 +37,7 @@ export const ProjectList = () => (
 
 const ProjectGrid = () => {
   const { data, isLoading } = useListContext();
-
-  const record = useRecordContext();
+  const isSmall = useMediaQuery<Theme>((theme) => theme.breakpoints.down("sm"));
 
   if (isLoading || data.length === 0) {
     return null;
@@ -121,10 +110,11 @@ const ProjectGrid = () => {
             variant="contained"
             label="View"
             sx={{
-              backgroundColor: "primary",
+              backgroundColor: "primary.main",
               boxShadow: "none",
               color: "white",
               height: "36px",
+              borderRadius: "5px",
               ":hover": {
                 backgroundColor: "primary.dark",
                 color: "white",
@@ -138,55 +128,26 @@ const ProjectGrid = () => {
   };
 
   return (
-    <Grid container spacing={2} sx={{ mt: 0 }}>
-      {data.map((record: ProjectListProps) => (
-        <RecordContextProvider value={record} key={record.id}>
-          <Grid key={record.id} xs={12} sm={6} md={4} lg={3} xl={2} item>
-            <ProjectCard />
-            {/* <Card
-              sx={{
-                boxShadow: "none",
-                border: "1px solid #e0e0e3",
-                borderRadius: "10px",
-                display: "flex",
-              }}
-            >
-              <Box sx={{ display: "flex", flexDirection: "column" }}>
-                <CardContent sx={{ flex: "1 0 auto" }}>
-                  <Typography component="div" variant="h5">
-                    {record.title}
-                  </Typography>
-                </CardContent>
-                <Box
-                  sx={{ display: "flex", alignItems: "center", pl: 1, pb: 1 }}
-                >
-                  <CardActions
-                    sx={{
-                      ".MuiCardActions-spacing": {
-                        display: "flex",
-                        justifyContent: "space-around",
-                      },
-                    }}
-                  >
-                    <ShowButton
-                      variant="contained"
-                      label="View"
-                      sx={{
-                        backgroundColor: "orange",
-                        color: "white",
-                        ":hover": {
-                          backgroundColor: "darkorange",
-                          color: "white",
-                        },
-                      }}
-                    />
-                  </CardActions>
-                </Box>
-              </Box>
-            </Card> */}
-          </Grid>
-        </RecordContextProvider>
-      ))}
+    <Grid sx={{ mt: `${isSmall ? 0 : "0.5em"}` }}>
+      <Grid sx={{ mt: 0 }} position="relative">
+        <CreateButton
+          resource="projects"
+          sx={{ position: "absolute", right: 0 }}
+        />
+      </Grid>
+      <Grid
+        container
+        spacing={2}
+        sx={{ mt: `${isSmall ? 0 : "1em"}`, pt: `${isSmall ? 0 : "1.5em"}` }}
+      >
+        {data.map((record: ProjectListProps) => (
+          <RecordContextProvider value={record} key={record.id}>
+            <Grid key={record.id} xs={12} sm={6} md={4} lg={3} xl={2} item>
+              <ProjectCard />
+            </Grid>
+          </RecordContextProvider>
+        ))}
+      </Grid>
     </Grid>
   );
 };

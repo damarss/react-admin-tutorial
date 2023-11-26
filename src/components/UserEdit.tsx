@@ -1,16 +1,16 @@
 import { Edit, NumberInput, SimpleForm, TextInput } from "react-admin";
 
 export const UserEdit = () => (
-  <Edit>
-    <SimpleForm>
-      <TextInput source="id" InputProps={{ disabled: true }} />
-      <TextInput source="name" />
-      <TextInput source="username" />
-      <NumberInput source="age" />
-      <TextInput source="email" />
-      <TextInput source="phone" />
-      <TextInput source="address.street" />
-      <TextInput source="website" />
+  <Edit sx={{ mb: 2 }}>
+    <SimpleForm sx={{ maxWidth: "40em" }}>
+      <NumberInput source="id" InputProps={{ disabled: true }} />
+      <TextInput source="name" fullWidth />
+      <TextInput source="username" fullWidth />
+      <NumberInput source="age" fullWidth />
+      <TextInput source="email" fullWidth />
+      <TextInput source="phone" fullWidth />
+      <TextInput source="address.street" fullWidth />
+      <TextInput source="website" fullWidth />
     </SimpleForm>
   </Edit>
 );

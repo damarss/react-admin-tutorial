@@ -9,10 +9,7 @@ import {
 import { dataProvider } from "./provider/localStorageDataProvider";
 import {
   Dashboard,
-  PostCreate,
-  PostEdit,
-  PostList,
-  PostShow,
+  ProjectCreate,
   ProjectEdit,
   ProjectList,
   ProjectShow,
@@ -20,6 +17,7 @@ import {
   UserCreate,
   UserEdit,
   UserList,
+  UserShow,
 } from "./components";
 import PostIcon from "@mui/icons-material/Book";
 import UserIcon from "@mui/icons-material/Group";
@@ -31,7 +29,7 @@ const theme = {
   ...defaultTheme,
   sidebar: {
     width: 200,
-  }
+  },
 };
 
 export const App = () => (
@@ -47,7 +45,7 @@ export const App = () => (
       name="users"
       list={UserList}
       recordRepresentation="name"
-      show={ShowGuesser}
+      show={UserShow}
       edit={UserEdit}
       create={UserCreate}
       icon={UserIcon}
@@ -58,14 +56,8 @@ export const App = () => (
       show={ProjectShow}
       icon={PostIcon}
       edit={ProjectEdit}
+      create={ProjectCreate}
       recordRepresentation="title"
-    />
-    <Resource
-      name="tasks"
-      list={TaskList}
-      show={ShowGuesser}
-      edit={EditGuesser}
-      icon={ProductIcon}
     />
     {/* <Resource name="posts" list={PostList} show={PostShow} edit={PostEdit} create={PostCreate} icon={ProductIcon} /> */}
   </Admin>

@@ -4,6 +4,8 @@ export { PostList, PostEdit, PostCreate, PostShow } from "./Post";
 export { ProjectList } from "./ProjectList";
 export { ProjectShow } from "./ProjectShow";
 export { ProjectEdit } from "./ProjectEdit";
+export { ProjectCreate } from "./ProjectCreate";
 export { UserCreate } from "./UserCreate";
 export { UserEdit } from "./UserEdit";
+export { UserShow } from "./UserShow";
 export { TaskList } from "./TaskList";

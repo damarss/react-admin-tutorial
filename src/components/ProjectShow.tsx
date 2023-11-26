@@ -24,10 +24,12 @@ import {
   useRecordContext,
   useUpdate,
 } from "react-admin";
+import { useMediaQuery, Theme } from "@mui/material";
 import { Grid, Box, Card, CardHeader, Avatar, IconButton } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import { type } from "os";
 import { useState } from "react";
+import MobileGrid from "./MobileGrid";
 
 const ProjectTitle = () => {
   const record = useRecordContext();
@@ -41,14 +43,18 @@ const ProjectTitle = () => {
 };
 
 export const ProjectShow = () => {
+  const isSmall = useMediaQuery<Theme>((theme) => theme.breakpoints.down("sm"));
+
   return (
     <Show title={<ProjectTitle />}>
       <TabbedShowLayout>
         <TabbedShowLayout.Tab label="info">
-          <TextField label="Project Title" source="title" sx={{ mb: 1 }} />
-          <RichTextField
-            label="Project Description"
-            source="description"
+          <TextField label="Project Title" source="title" sx={{ my: 1 }} />
+          <ReferenceField
+            label="Project Leader"
+            source="project_leader"
+            reference="users"
+            link="show"
             sx={{ mb: 1 }}
           />
           <DateField label="Start Date" source="startdate" sx={{ mb: 1 }} />
@@ -58,12 +64,9 @@ export const ProjectShow = () => {
             source="timeleft"
             sx={{ mb: 1 }}
           />
-          <ReferenceField
-            label="Project Leader"
-            source="project_leader"
-            reference="users"
-            link="show"
-          />
+        </TabbedShowLayout.Tab>
+        <TabbedShowLayout.Tab label="description">
+          <RichTextField label="" source="description" />
         </TabbedShowLayout.Tab>
         <TabbedShowLayout.Tab label="participant">
           <WithRecord
@@ -83,20 +86,24 @@ export const ProjectShow = () => {
                     titleTypographyProps={{ variant: "h6" }}
                   />
                   <Box sx={{ height: 2, bgcolor: "grey.300" }} />
-                  <Datagrid isRowSelectable={() => false}>
-                    <Avatar aria-label="">
-                      <TextField source="name[0]" />
-                    </Avatar>
-                    <ReferenceField
-                      label="Name"
-                      source="id"
-                      reference="users"
-                      link="show"
-                    />
-                    <TextField source="username" />
-                    <EmailField source="email" />
-                    <TextField source="phone" />
-                  </Datagrid>
+                  {isSmall ? (
+                    <MobileGrid isReferred={true} />
+                  ) : (
+                    <Datagrid isRowSelectable={() => false}>
+                      <Avatar aria-label="">
+                        <TextField source="name[0]" />
+                      </Avatar>
+                      <ReferenceField
+                        label="Name"
+                        source="id"
+                        reference="users"
+                        link="show"
+                      />
+                      <TextField source="username" />
+                      <EmailField source="email" />
+                      <TextField source="phone" />
+                    </Datagrid>
+                  )}
                 </Card>
               </ReferenceArrayField>
             )}

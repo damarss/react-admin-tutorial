@@ -1,10 +1,9 @@
 import React from "react";
 import {
+  Create,
   DateInput,
-  Edit,
   ReferenceArrayInput,
   ReferenceInput,
-  RichTextField,
   SimpleForm,
   TextInput,
 } from "react-admin";
@@ -14,16 +13,15 @@ const RichTextInput = React.lazy(() =>
   }))
 );
 
-export const ProjectEdit = () => (
-  <Edit sx={{ mb: 2 }}>
+export const ProjectCreate = () => (
+  <Create sx={{ mb: 2 }}>
     <SimpleForm sx={{ maxWidth: "40em" }}>
-      <TextInput source="id" InputProps={{ disabled: true }} />
       <TextInput source="title" autoFocus fullWidth />
       <RichTextInput source="description" fullWidth />
-      <DateInput source="startdate" />
+      <DateInput source="startdate" fullWidth />
       <DateInput source="enddate" />
       <ReferenceInput source="project_leader" reference="users" />
       <ReferenceArrayInput source="project_members" reference="users" />
     </SimpleForm>
-  </Edit>
+  </Create>
 );
