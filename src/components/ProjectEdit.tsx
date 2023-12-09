@@ -4,7 +4,6 @@ import {
   Edit,
   ReferenceArrayInput,
   ReferenceInput,
-  RichTextField,
   SimpleForm,
   TextInput,
 } from "react-admin";

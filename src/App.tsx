@@ -1,5 +1,6 @@
 import {
   Admin,
+  CustomRoutes,
   EditGuesser,
   ListGuesser,
   Login,
@@ -20,11 +21,13 @@ import {
   UserList,
   UserShow,
 } from "./components";
+import { Route } from "react-router";
 import PostIcon from "@mui/icons-material/Book";
 import UserIcon from "@mui/icons-material/Group";
-import ProductIcon from "@mui/icons-material/Collections";
 import { localAuthProvider } from "./provider/localAuthProvider";
 import { Layout } from "./layout";
+import { HomePage } from "./homepage";
+import { About } from "./about";
 
 const theme = {
   ...defaultTheme,
@@ -63,6 +66,9 @@ export const App = () => (
       create={ProjectCreate}
       recordRepresentation="title"
     />
-    {/* <Resource name="posts" list={PostList} show={PostShow} edit={PostEdit} create={PostCreate} icon={ProductIcon} /> */}
+    <CustomRoutes noLayout>
+      <Route path="home" element={<HomePage />} />
+      <Route path="about" element={<About />} />
+    </CustomRoutes>
   </Admin>
 );

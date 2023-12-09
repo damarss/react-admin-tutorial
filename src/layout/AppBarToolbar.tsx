@@ -1,11 +1,12 @@
-import { LoadingIndicator } from "react-admin"
+import { LoadingIndicator, LocalesMenuButton } from "react-admin";
 
 const AppBarToolbar = () => {
   return (
     <>
       <LoadingIndicator />
+      <LocalesMenuButton />
     </>
-  )
-}
+  );
+};
 
-export default AppBarToolbar
+export default AppBarToolbar;

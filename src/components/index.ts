@@ -9,3 +9,4 @@ export { UserCreate } from "./UserCreate";
 export { UserEdit } from "./UserEdit";
 export { UserShow } from "./UserShow";
 export { TaskList } from "./TaskList";
+export { Navbar } from "./Navbar";
